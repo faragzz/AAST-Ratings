@@ -1,4 +1,4 @@
-package com.example.aast_ratings
+package com.example.aast_ratings.BottomNav
 
 import androidx.compose.ui.graphics.vector.ImageVector
 

@@ -1,23 +1,20 @@
 package com.example.aast_ratings.pages
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.CornerRadius
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.aast_ratings.APIState.StateViewModel
 import com.example.aast_ratings.ui.theme.background
 import com.example.aast_ratings.R
 import com.example.aast_ratings.ui.theme.bar
@@ -26,8 +23,13 @@ import com.example.aast_ratings.ui.theme.whiteText
 
 
 @Composable
-@Preview
 fun Home_Page() {
+    val viewModel: StateViewModel = viewModel()
+    var campuses by remember { mutableStateOf(viewModel.getcampuses().toString())}
+    var colleges by remember { mutableStateOf(viewModel.getcolleges().toString()) }
+    var lecturers by remember { mutableStateOf(viewModel.getlecturers().toString())}
+    var reviews by remember { mutableStateOf(viewModel.getreviews().toString())}
+
     val image = painterResource(id = R.drawable.logo)
     Box(
         modifier = Modifier
@@ -135,41 +137,41 @@ fun Home_Page() {
                         )
                         {
                             Spacer(modifier = Modifier.width(30.dp))
-                            Text(
-                                text = "3",
-                                fontSize = 14.sp,
-                                style = TextStyle(
-                                    color = whiteText,
-                                    fontWeight = FontWeight.Bold
+                                Text(
+                                    text = viewModel.getcampuses().toString(),
+                                    fontSize = 14.sp,
+                                    style = TextStyle(
+                                        color = whiteText,
+                                        fontWeight = FontWeight.Bold
+                                    )
                                 )
-                            )
                             Spacer(modifier = Modifier.width(60.dp))
-                            Text(
-                                text = "8",
-                                fontSize = 14.sp,
-                                style = TextStyle(
-                                    color = whiteText,
-                                    fontWeight = FontWeight.Bold
+                                Text(
+                                    text = viewModel.getcolleges().toString(),
+                                    fontSize = 14.sp,
+                                    style = TextStyle(
+                                        color = whiteText,
+                                        fontWeight = FontWeight.Bold
+                                    )
                                 )
-                            )
                             Spacer(modifier = Modifier.width(65.dp))
-                            Text(
-                                text = "11",
-                                fontSize = 14.sp,
-                                style = TextStyle(
-                                    color = number,
-                                    fontWeight = FontWeight.Bold
+                                Text(
+                                    text = viewModel.getlecturers().toString(),
+                                    fontSize = 14.sp,
+                                    style = TextStyle(
+                                        color = number,
+                                        fontWeight = FontWeight.Bold
+                                    )
                                 )
-                            )
                             Spacer(modifier = Modifier.width(45.dp))
-                            Text(
-                                text = "409",
-                                fontSize = 14.sp,
-                                style = TextStyle(
-                                    color = number,
-                                    fontWeight = FontWeight.Bold
+                                Text(
+                                    text = viewModel.getreviews().toString(),
+                                    fontSize = 14.sp,
+                                    style = TextStyle(
+                                        color = number,
+                                        fontWeight = FontWeight.Bold
+                                    )
                                 )
-                            )
                         }
                     }
                 }

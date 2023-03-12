@@ -12,6 +12,6 @@ fun Search_Page() {
     Box(
         modifier = Modifier.fillMaxSize().background(background)
     ){
-
+        
     }
 }
